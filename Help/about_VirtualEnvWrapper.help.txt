@@ -1,0 +1,33 @@
+TOPIC
+	The VirtualEnvWrapper Module
+
+SHORT DESCRIPTION
+      Implementation of virtualenvwrapper in PowerShell
+
+LONG DESCRIPTION
+     The original implementation of virtualenvwrapper for Windows does
+     not work in Powershell. This module is a reimplementation of the
+     wrapper specifically for Powershell. It uses Powershell functions
+     for the implementation.
+
+EXAMPLES
+      # See what environments have been created
+    lsvirtualenv
+      # Create a new environment with the name 'new-pyenv' using the
+        Python 2.7 version
+    mkvirtualenv new-pyenv -Python c:\Python27\
+      # Activate the new-pyenv environment
+    workon new-pyenv
+      # Deactivate the new-pyenv environment
+    workon new-pyenv
+      # Delete the environment new-pyenv
+    rmvirtualenv new-pyenv
+    
+
+NOTES
+
+
+KEYWORDS
+
+SEE ALSO
+   The repository can be found at https://github.com/regisf/virtualenvwrapper-powershell.
