@@ -7,6 +7,7 @@
 $PowerShellProfile = $PROFILE.CurrentUserAllHosts
 $PowerShellPath = Split-Path $PowerShellProfile
 $InstallationPath = Join-Path $PowerShellPath Modules
+$HelpInstallationPath = Join-Path $InstallationPath Help
 
 function Ask-User($Message)
 {
@@ -33,6 +34,16 @@ if (!(Test-Path $InstallationPath))
 }
 
 Copy-Item VirtualEnvWrapper.psm1 $InstallationPath\VirtualEnvWrapper.psm1
+
+# Module help files go in the Help directory, subdirectory of the
+# module directory. If the directory does not exist, create it
+if(!(Test-Path $HelpInstallationPath)){
+    Write-Host "Creating directory for Help"
+    New-Item -ItemType Directory -Force -Path $HelpInstallationPath
+}
+
+# Copy the 'about' file into the Help directory
+Copy-Item Help\about_VirtualEnvWrapper.help.txt $HelpInstallationPath\about_VirtualEnvWrapper.help.txt
 
 # If Powershell profile doesn't exist, add it with necessary contents
 # Otherwise append contents to existing profile
